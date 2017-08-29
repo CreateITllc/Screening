@@ -1,0 +1,275 @@
+﻿
+@model Screening.Models.Step1Model
+
+@{
+    ViewBag.Title = "New User";
+}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>2020 Screening</title>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+
+<body>
+    <!-- start container -->
+    <div class="container">
+        <!-- start register-section -->
+        @using (Html.BeginForm("Step1Post", "Registration", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+            @Html.ValidationSummary(true)
+            <div class="register-section">
+                <h3>Welcome Vizient staffing agencies! Please fill out the form below to get started</h3>
+               
+                    <div class="col-md-12 clearfix">
+                        <div class="step-heading">
+                            <span class="glyphicon glyphicon-pencil step-check-icon"></span> <i>Step 1 of 5 </i> Create User name and password
+                        </div>
+                    </div>
+                <div class="clearfix"></div>
+                <!-- start alert-info -->
+                <div class="alert alert-info">
+                    <div class="container-fluid">
+                        <!-- start alert-icon -->
+                        <div class="alert-icon">
+                            <i class="material-icons">info_outline</i>
+                        </div>
+                        <!-- end alert-icon -->
+                        Usernames and Passwords are limited to 15 characters, and may  include letter, numbers, and symbols. You will use your username and password to access your background screening account at www.optimumscreening.com
+                    </div>
+                </div>
+                <!-- end alert-info -->
+                <form>
+                    <div class="row">
+                        <!-- start form-group -->
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group form-group label-static">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">&#xE87C;</i>
+                                    </span>
+                                    @Html.TextBoxFor(u => u.UserName, new { placeholder = "User Name", @class = "form-control", @onkeyup = "myFunction(this.id)", @maxlength = "15" })
+                                    @Html.ValidationMessageFor(a => a.UserName, String.Empty, new { @style = "color:red;!important" })
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end form-group -->
+                        <!-- start form-group -->
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">&#xE0BE;</i>
+                                    </span>
+                                    @Html.TextBoxFor(x => x.Email, new { placeholder = "Email", @class = "form-control", @maxlength = "40" })
+                                    @Html.ValidationMessageFor(a => a.Email, String.Empty, new { @style = "color:red;!important" })
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end form-group -->
+                    </div>
+                    <div class="row">
+                        <!-- start form-group -->
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">&#xE897;</i>
+                                    </span>
+                                    @Html.TextBoxFor(x => x.Password, new { placeholder = "Password", @class = "form-control", @type = "password", @maxlength = "15" })
+                                    @Html.ValidationMessageFor(a => a.Password, String.Empty, new { @style = "color:red;!important" })
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end form-group -->
+                        <!-- start form-group -->
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">&#xE898;</i>
+                                    </span>
+                                    @Html.TextBoxFor(x => x.ConfirmPassword, new { placeholder = "Confirm Password", @class = "form-control", @type = "password", @maxlength = "15" })
+                                    @Html.ValidationMessageFor(a => a.ConfirmPassword, String.Empty, new { @style = "color:red;!important" })
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end form-group -->
+                    </div>
+                    <h4>Please select 3 questions that can be used to identify you if you forget your password. Please note that the answer are case sensitive.</h4>
+                    <div class="row">
+                        <!-- start form-group -->
+                        <div class="col-md-8 col-sm-8">
+                            <div class="form-group label-static">
+                                <div class="input-group">
+                                    @*<div class="arrow"><img src="~/Content/Images/arrow.png" width="9" height="5" alt="arrow" /></div>*@
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">&#xE887;</i>
+                                    </span>
+                                    @Html.DropDownList("Question1", new SelectList(ViewBag.Question, "QuestionId", "Question"), "Select", new { id = "ddlQuestion", @class = "form-control", size = "1", @style = "margin-bottom: 5px;", required = "true", name = "mailhouse_id" })@*onchange = "changeValue('ddlMailHouseName','ddlMailHouseName1')"*@
+                                    @Html.ValidationMessageFor(a => a.Question1, String.Empty, new { @style = "color:red;!important" })
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end form-group -->
+                        <!-- start form-group -->
+                        <div class="col-md-4 col-sm-4">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"></span>
+                                    @Html.TextBoxFor(x => x.Answer1, new { placeholder = "Answer", @class = "form-control upper", onkeydown = "return isValid(event);" })
+                                    @Html.ValidationMessageFor(a => a.Answer1, String.Empty, new { @style = "color:red;!important" })
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end form-group -->
+                    </div>
+                    <div class="row">
+                        <!-- start form-group -->
+                        <div class="col-md-8 col-sm-8">
+                            <div class="form-group label-static">
+                                <div class="input-group">
+                                    @*<div class="arrow"><img src="~/Content/Images/arrow.png" width="9" height="5" alt="arrow" /></div>*@
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">&#xE887;</i>
+                                    </span>
+                                    @Html.DropDownList("Question2", new SelectList(ViewBag.Question, "QuestionId", "Question"), "Select", new { id = "ddlQuestion", @class = "form-control", size = "1", @style = "margin-bottom: 5px;", required = "true", name = "mailhouse_id" })@*onchange = "changeValue('ddlMailHouseName','ddlMailHouseName1')"*@
+                                    @Html.ValidationMessageFor(a => a.Question2, String.Empty, new { @style = "color:red;!important" })
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end form-group -->
+                        <!-- start form-group -->
+                        <div class="col-md-4 col-sm-4">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"></span>
+                                    @*<input type="text" class="form-control" placeholder="Answer">*@
+                                    @Html.TextBoxFor(x => x.Answer2, new { placeholder = "Answer", @class = "form-control", onkeydown = "return isValid(event);" })
+                                    @Html.ValidationMessageFor(a => a.Answer2, String.Empty, new { @style = "color:red;!important" })
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end form-group -->
+                    </div>
+                    <div class="row">
+                        <!-- start form-group -->
+                        <div class="col-md-8 col-sm-8">
+                            <div class="form-group label-static">
+                                <div class="input-group">
+                                    @*<div class="arrow"><img src="~/Content/Images/arrow.png" width="9" height="5" alt="arrow" /></div>*@
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">&#xE887;</i>
+                                    </span>
+                                    @Html.DropDownList("Question3", new SelectList(ViewBag.Question, "QuestionId", "Question"), "Select", new { id = "ddlQuestion", @class = "form-control", size = "1", @style = "margin-bottom: 5px;", required = "true", name = "mailhouse_id" })@*onchange = "changeValue('ddlMailHouseName','ddlMailHouseName1')"*@
+                                    @Html.ValidationMessageFor(a => a.Question3, String.Empty, new { @style = "color:red;!important" })
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end form-group -->
+                        <!-- start form-group -->
+                        <div class="col-md-4 col-sm-4">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"></span>
+                                    @Html.TextBoxFor(x => x.Answer3, new
+                               {
+                                   placeholder = "Answer",
+                                   @class = "form-control",
+                                   onkeydown = "return isValid(event);"
+                               })
+
+                                    @Html.ValidationMessageFor(a => a.Answer3, String.Empty, new { @style = "color:red;!important" })
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="g-recaptcha" data-sitekey="@System.Configuration.ConfigurationManager.AppSettings["RecaptchPublicKey"]" data-callback="onReturnCallback">
+
+                    </div><div>
+                        <span id="lblSelectedProductName" style="color:red"> </span>
+                    </div>
+                    <!-- end form-group -->
+
+                    <div class="form-group">
+
+                        <div class="text-right">
+
+                            <button class="btn btn-success pull-right" onclick="return captchVerify();">SAVE &amp; CONTINUE</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            //{
+            //    TempData.Keep("RedirectData");
+
+            //}
+        }
+        <!-- end register-section -->
+    </div>
+    <!-- end container -->
+    <!--   Core JS Files   -->
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script>
+        var IscaptchVerify = false;
+        function captchVerify() {
+            if (IscaptchVerify)
+                return true;
+            else
+                $('#lblSelectedProductName').text('Please Verify Captcha');
+            return false;
+
+        }
+        function myFunction(id) {
+            var txt = document.getElementById(id);
+            txt.value = txt.value.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
+        }
+        var onReturnCallback = function (response) {
+            $('#lblSelectedProductName').text('');
+            IscaptchVerify = true;
+            //alert('g-recaptcha-response: ' + grecaptcha.getResponse());
+        }; // end of onReturnCallback
+
+
+    </script>
+</body>
+</html>
+<script>
+    var IscaptchVerify = false;
+    function captchVerify() {
+        if (IscaptchVerify)
+            return true;
+        else
+            $('#lblSelectedProductName').text('Please Verify Captcha');
+        return false;
+
+    }
+    function myFunction(id) {
+        var txt = document.getElementById(id);
+        txt.value = txt.value.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
+    }
+    var onReturnCallback = function (response) {
+        $('#lblSelectedProductName').text('');
+        IscaptchVerify = true;
+        //alert('g-recaptcha-response: ' + grecaptcha.getResponse());
+    }; // end of onReturnCallback
+    function isValid(e) {
+       
+        var charCode = (e.which) ? e.which : e.keyCode
+        if ((charCode >= 48 && charCode <= 90) || (charCode >= 96 && charCode <= 105) || charCode == 109 || charCode == 8) {
+            return true;
+        }
+        return false;
+
+
+
+
+    }
+
+</script>

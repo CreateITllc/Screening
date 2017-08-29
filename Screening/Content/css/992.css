@@ -1,0 +1,23 @@
+.card-signup.tables{margin:0;}
+.btn {
+    padding: 12px 25px;
+}
+.popup {
+    width: 65%;
+}
+.main-container {
+    padding: 0px;
+}
+#piechart {
+    max-height: 242px;
+}
+#highcharts-0 {
+    top: -80px !important;
+}
+
+@media screen\0 {
+
+    #piechart {
+            max-height: 350px;
+    }
+}

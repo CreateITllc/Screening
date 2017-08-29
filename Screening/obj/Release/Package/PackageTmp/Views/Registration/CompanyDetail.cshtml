@@ -1,0 +1,701 @@
+﻿@using System.Collections.Generic;
+@model Screening.Models.Step2Model
+
+@{
+    ViewBag.Title = "ApplicantRegistration";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>2020 Screening|Registration</title>
+
+</head>
+
+<body>
+    <!-- start navbar-default -->
+    <!-- end navbar-default -->
+    <!-- start container -->
+    <div class="container">
+        @if (ViewBag.Message != null)
+        {
+            <div class="alert alert-danger">
+                <div class="container-fluid">
+
+                    <div class="alert-icon">
+                        <i class="material-icons">error_outline</i>
+                    </div>
+
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                    </button>
+                    @ViewBag.Message
+            </div>
+        </div>
+        }
+        <input id="popup1" type="checkbox" />
+        <div class="overlay">
+            <div class="popup">
+                <h4>Terms</h4>
+                <label class="button" for="popup1">&times;</label>
+                <div class="content">
+                    <div class="table-responsive">
+
+                        <table class="table registration-terms-table">
+                            <thead class="table-inverse">
+                                <tr>
+
+                                    <th><h4><b>Terms Of Use/Disclaimer</b></h4></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            I agree to all the considerations of the mutual covenants contained  herein and for other good and valuable consideration, the receipt and adequacy of which is
+                                            hereby acknowledged, agree as follows:
+
+                                        </p>
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td><h5>1. Services</h5></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <ol></ol>
+                                        a. Customer certifies that the primary use of service is to obtain background reports,
+                                        (which may include credit reports), in connection with the evaluation of individuals
+                                        for employment, promotion, reassignment or retention as an employee or for business
+                                        purposes before entering into a financial agreement.
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        b. User shall request background reports, pursuant to procedures pre-scribed, for
+                                        reasons listed above and no other purpose. The background reports listed on the
+                                        Description of Searches, include public and non-public reports provided	by government
+                                        and private entities.
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td><h5>2. Confidentiality</h5></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        a. The Customer agrees that all reports will be used one time only and kept strictly confidential, except as required by law, and will not disclose information from
+                                        reports	to any third parties not involved in the current employment decision.
+                                        Customer agrees to comply at all times with the Fair Credit Reporting Act (FCRA),
+                                        Drivers Privacy Protection Act, (DPPA), and all other applicable laws as these
+                                        provide protection for the general public. No information will be requested for the
+                                        use of any individual or corporation other than the Customer. Requests for report
+                                        information from the person who is the subject of the report will be referred to the
+                                        Customer who will provide the report information for disclosure only as provided
+                                        under the Fair Credit Reporting Act or other applicable laws. Information will not
+                                        be used in violation of any applicable federal or state equal employment
+                                        opportunity law or regulation.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        b. Before a consumer report is obtained; a clear and conspicuous disclosure is made in
+                                        writing to the applicant in a document that consists solely of the disclosure that
+                                        a background report may be obtained for employment purposes. Customer will obtain
+                                        a written consent signed by the subject individual prior to requesting a report from
+                                        the Provider. Customer will maintain copies of all written authorization for a
+                                        minimum of five (5) years from the date of inquiry or such longer period of time as
+                                        required by law. Each request for a report will further state the specific purpose
+                                        involved in each transaction and such reports will be used for no other purpose.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        c. Customer further certifies that before taking adverse action, whether based wholly
+                                        or partly on information provided in the background report, it will provide the
+                                        consumer; A copy of the background results; and A copy of the consumer’s rights,
+                                        in the format approved by the Federal Trade Commission (FTC)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        d. The Customer agrees to hold Provider and Provider’s affiliates from whom such
+                                        reports	were obtained,as well as their officers, employees, independent contractors,
+                                        agents and assigns harmless from and against any expense or damage resulting from
+                                        obtaining or publishing report information contrary to these conditions, by the
+                                        Customer, its employees or agents.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        e. Recognizing that information is secured by and through fallible human sources and
+                                        that the Provider cannot insure the accuracy of the information, the Customer
+                                        understands and agrees that the accuracy of any information furnished is not
+                                        guaranteed by Provider and the Customer releases Provider, Provider’s affiliated
+                                        companies, all companies and their affiliates from which Provider obtains these
+                                        reports, and all of their officers, employees, independent contractors, agents and
+                                        assigns, from any and all liability, including, without limitation, liability or
+                                        damage from any negligence in connection with the preparation of such reports and
+                                        from any loss or expenses suffered by the customer resulting directly or indirectly
+                                        from such reports or those of the Customer’s affiliated companies.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        f. Certify that the customer is properly licensed for business, is the End User and
+                                        will not resell the information to any third party.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        h. It is a requirement that all end users take precautions to secure any system or
+                                        device used to access consumer information. There should be limited access, in a
+                                        secure environment, restricted to a few key personnel.
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- start register-section -->
+        <div class="register-section">
+
+            <div class="col-md-12 clearfix">
+                <div class="step-heading">
+                    <span class="fa fa-building  step-check-icon"></span> <i>Step 1 of 4 </i> Create Account and Provide Information
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <!-- start alert-info -->
+            <div class="alert alert-info">
+                <div class="container-fluid">
+                    <!-- start alert-icon -->
+                    <div class="alert-icon">
+                        <i class="material-icons">info_outline</i>
+                    </div>
+                    <!-- end alert-icon -->
+                    Please type a single name per name field. Do not include punctuation, symbols or space in name fields. Labels with orange Color indicates that the fields are mandatory.
+                </div>
+            </div>
+            <!-- end alert-info -->
+            @using (Html.BeginForm("CompanyDetail", "Registration", FormMethod.Post))
+            {
+            @*@Html.HiddenFor(x => x.UserID);*@
+
+            @Html.ValidationSummary(true)
+
+            <div class="row">
+                <!-- start form-group -->
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group label-static">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="material-icons">&#xE87C;</i>
+                            </span>
+                            <label class="control-label error-alert">Company Name</label>
+                            @Html.TextBoxFor(u => u.CompanyName, new { @class = "form-control", @onkeyup = "myFunction(this.id)", @maxlength = "200", onkeydown = "return isValidSpace(event);" })
+                            @Html.ValidationMessageFor(a => a.CompanyName, String.Empty, new { @style = "color:red;!important" })
+                            <span class="form-control-feedback">
+                                <i class="material-icons">&#xE876;</i>
+                            </span>
+                            <span class="material-icons form-control-feedback">clear</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- end form-group -->
+                <!-- start form-group -->
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group label-static">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="material-icons">&#xE87C;</i>
+                            </span>
+                            <label class="control-label ">Business Structure</label>
+                            @Html.TextBoxFor(u => u.BusinessStructure, new { @class = "form-control", @maxlength = "200" })
+                            @Html.ValidationMessageFor(u => u.BusinessStructure, string.Empty, new { @style = "color:red;!important" })
+                            <span class="form-control-feedback">
+                                <i class="material-icons">&#xE876;</i>
+                            </span>
+                            <span class="material-icons form-control-feedback">clear</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- end form-group -->
+            </div>
+            <div class="row">
+                <!-- start form-group -->
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group label-static">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="material-icons">&#xE87C;</i>
+                            </span>
+                            <label class="control-label error-alert">Contact First Name</label>
+                            @Html.TextBoxFor(u => u.ContactFirstName, new { @class = "form-control", @onkeyup = "myFunction(this.id)", @maxlength = "100", onkeydown = "return isValid(event);" })
+                            @Html.ValidationMessageFor(u => u.ContactFirstName, string.Empty, new { @style = "color:red;!important" })
+                            <span class="form-control-feedback">
+                                <i class="material-icons">&#xE876;</i>
+                            </span>
+                            <span class="material-icons form-control-feedback">clear</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- end form-group -->
+                <!-- start form-group -->
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group label-static">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="material-icons">&#xE87C;</i>
+                            </span>
+                            <label class="control-label ">Contact Last Name</label>
+                            @Html.TextBoxFor(u => u.ContactLastName, new { @class = "form-control", @onkeyup = "myFunction(this.id)", @maxlength = "100", onkeydown = "return isValid(event);" })
+                            @*@Html.TextBox("LastName", "", new { @class = "form-control" })*@
+                            @Html.ValidationMessageFor(u => u.ContactLastName, string.Empty, new { @style = "color:red;!important" })
+                            <span class="form-control-feedback">
+                                <i class="material-icons">&#xE876;</i>
+                            </span>
+                            <span class="material-icons form-control-feedback">clear</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- end form-group -->
+            </div>
+            <div class="row">
+                <!-- start form-group -->
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group label-static is-empty">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="material-icons">&#xE8D3;</i>
+                            </span>
+                            <label class="control-label error-alert ">Contact email</label>
+                            @Html.TextBoxFor(u => u.ContactEmail, new { @class = "form-control", @onkeyup = "myFunction(this.id)", @maxlength = "100" })
+                            @Html.ValidationMessageFor(u => u.ContactEmail, string.Empty, new { @style = "color:red;!important" })
+                            @*<select class="form-control" name="Suffix">
+                                    <option>Mr</option>
+                                    <option>Ms</option>
+                                    <option>Mrs</option>
+                                </select>*@
+                            <span class="form-control-feedback">
+                                <i class="material-icons">&#xE876;</i>
+                            </span>
+                            <span class="material-icons form-control-feedback">clear</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- end form-group -->
+                <!-- start form-group -->
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group label-static is-empty">
+                        <div class="input-group with-alert">
+                            <span class="input-group-addon">
+                                <i class="fa fa-venus-mars" aria-hidden="true"></i>
+                            </span>
+                            <label class="control-label error-alert">Contact direct phone</label>
+                            @Html.TextBoxFor(u => u.Contactdirectphone, new { @class = "form-control", @maxlength = "25" })
+                            @Html.ValidationMessageFor(u => u.Contactdirectphone, string.Empty, new { @style = "color:red;!important" })
+                            <a href="javascript:void(0)" class="notify-popover" data-toggle="popover" data-placement="right" title="" data-content="ie, EIPaso County, Colorado (2000-03), PLymouth Country, Texas (03-06), German (1971-99)"><i class="material-icons">&#xE000;</i></a>
+                            <span class="form-control-feedback">
+                                <i class="material-icons">&#xE876;</i>
+                            </span>
+                            <span class="material-icons form-control-feedback">clear</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- end form-group -->
+                <!-- start form-group -->
+                <!-- end form-group -->
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group label-static">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="material-icons">&#xE87C;</i>
+                            </span>
+                            <label class="control-label error-alert">Contact cell phone</label>
+                            @Html.TextBoxFor(u => u.ContactCellPhone, new { @class = "form-control", @maxlength = "25" })
+                            <span class="form-control-feedback">
+                                <i class="material-icons">&#xE876;</i>
+                            </span>
+                            <span class="material-icons form-control-feedback">clear</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- start form-group -->
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group label-static">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-road" aria-hidden="true"></i>
+                            </span>
+                            <label class="control-label">Contact (2) First Name</label>
+                            @Html.TextBoxFor(u => u.Contact2FirstName, new { @class = "form-control", @maxlength = "100", onkeydown = "return isValid(event);" })
+                            @Html.ValidationMessageFor(u => u.Contact2FirstName, string.Empty, new { @style = "color:red;!important" })
+                            <span class="form-control-feedback">
+                                <i class="material-icons">&#xE876;</i>
+                            </span>
+                            <span class="material-icons form-control-feedback">clear</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- end form-group -->
+                <!-- start form-group -->
+                <!-- end form-group -->
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group label-static">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            </span>
+                            <label class="control-label ">Contact (2) Last Name</label>
+                            @Html.TextBoxFor(u => u.Contact2LastName, new { @class = "form-control", @maxlength = "100", onkeydown = "return isValid(event);" })
+                            <span class="form-control-feedback">
+                                <i class="material-icons">&#xE876;</i>
+                            </span>
+                            <span class="material-icons form-control-feedback">clear</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- start form-group -->
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group label-static">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="material-icons">&#xE7F1;</i>
+                            </span>
+                            <label class="control-label ">Contact (2) Email</label>
+                            @Html.TextBoxFor(u => u.Contact2Email, new { @class = "form-control", @onkeyup = "myFunction(this.id)", @maxlength = "100" })
+                            @Html.ValidationMessageFor(u => u.Contact2Email, string.Empty, new { @style = "color:red;!important" })
+                            <span class="form-control-feedback">
+                                <i class="material-icons">&#xE876;</i>
+                            </span>
+                            <span class="material-icons form-control-feedback">clear</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group label-static">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="material-icons">&#xE55B;</i>
+                            </span>
+                            <label class="control-label ">Contact (2) Direct Phone</label>
+                            @Html.TextBoxFor(u => u.Contact2directphone, new { @class = "form-control", @maxlength = "25" })
+                            @Html.ValidationMessageFor(u => u.Contact2directphone, string.Empty, new { @style = "color:red;!important" })
+
+                            @*<button onclick="myFunction()">Try it</button>
+
+                                <script>
+                                        function myFunction() {
+                                            document.getElementById("ddlState").size = "4";
+                                        }
+                                    </script>*@
+                            <span class="form-control-feedback">
+                                <i class="material-icons">&#xE876;</i>
+                            </span>
+                            <span class="material-icons form-control-feedback">clear</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- end form-group -->
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group label-static">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="material-icons">&#xE55B;</i>
+                            </span>
+                            <label class="control-label ">Contact (2) Cell Phone</label>
+                            @Html.TextBoxFor(u => u.Contact2CellPhone, new { @class = "form-control", @maxlength = "25" })
+                            @Html.ValidationMessageFor(u => u.Contact2CellPhone, string.Empty, new { @style = "color:red;!important" })
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group label-static">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="material-icons">&#xE55B;</i>
+                            </span>
+                            <label class="control-label ">Company Website Address</label>
+                            @Html.TextBoxFor(u => u.CompanyWebsiteAddress, new { @class = "form-control", @onkeyup = "myFunction(this.id)", @maxlength = "100" })
+                            @Html.ValidationMessageFor(u => u.CompanyWebsiteAddress, string.Empty, new { @style = "color:red;!important" })
+
+                            @*<button onclick="myFunction()">Try it</button>
+
+                                <script>
+                                        function myFunction() {
+                                            document.getElementById("ddlState").size = "4";
+                                        }
+                                    </script>*@
+                            <span class="form-control-feedback">
+                                <i class="material-icons">&#xE876;</i>
+                            </span>
+                            <span class="material-icons form-control-feedback">clear</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- end form-group -->
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group label-static">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="material-icons">&#xE55B;</i>
+                            </span>
+                            <label class="control-label error-alert">Corporate FULL Address</label>
+                            @Html.TextBoxFor(u => u.CorporateFullAddress, new { @class = "form-control", @onkeyup = "myFunction(this.id)", @maxlength = "200", onkeydown = "return isValidSpace(event);" })
+                            @Html.ValidationMessageFor(u => u.CorporateFullAddress, string.Empty, new { @style = "color:red;!important" })
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group label-static">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="material-icons">&#xE55B;</i>
+                            </span>
+                            <label class="control-label">Email Credentials To</label>
+                            @Html.TextBoxFor(u => u.Emailcredentialsto, new { @class = "form-control", @maxlength = "100", onkeydown = "return ValidateNumber(event);" })
+                            @Html.ValidationMessageFor(u => u.Emailcredentialsto, string.Empty, new { @style = "color:red;!important" })
+                            <span class="form-control-feedback">
+                                <i class="material-icons">&#xE876;</i>
+                            </span>
+                            <span class="material-icons form-control-feedback">clear</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group label-static">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="material-icons">&#xE55B;</i>
+                            </span>
+                            <label class="control-label">Email Agreement To</label>
+                            @Html.TextBoxFor(u => u.Emailagreementto, new { @class = "form-control", @maxlength = "100", onkeydown = "return ValidateNumber(event);" })
+                            @Html.ValidationMessageFor(u => u.Emailagreementto, string.Empty, new { @style = "color:red;!important" })
+                            <span class="form-control-feedback">
+                                <i class="material-icons">&#xE876;</i>
+                            </span>
+                            <span class="material-icons form-control-feedback">clear</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group label-static">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="material-icons">&#xE55B;</i>
+                            </span>
+                            <label class="control-label error-alert">Estimated number of background screenings</label>
+                            @Html.TextBoxFor(u => u.EstimatedNumberofBackgroundScreenings, new { @class = "form-control", @maxlength = "200", onkeydown = "return isValid(event);" })
+                            @Html.ValidationMessageFor(u => u.EstimatedNumberofBackgroundScreenings, string.Empty, new { @style = "color:red;!important" })
+                            <span class="form-control-feedback">
+                                <i class="material-icons">&#xE876;</i>
+                            </span>
+                            <span class="material-icons form-control-feedback">clear</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group label-static">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="material-icons">&#xE55B;</i>
+                            </span>
+                            <label class="control-label">Estimated number of drug screenings</label>
+                            @Html.TextBoxFor(u => u.Estimatednumberofdrugscreenings, new { @class = "form-control", @maxlength = "100", onkeydown = "return isValid(event);" })
+                            @Html.ValidationMessageFor(u => u.Estimatednumberofdrugscreenings, string.Empty, new { @style = "color:red;!important" })
+                            <span class="form-control-feedback">
+                                <i class="material-icons">&#xE876;</i>
+                            </span>
+                            <span class="material-icons form-control-feedback">clear</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                @if (Model.Agency != null)
+                    {
+                        foreach (var item in Model.Agency.Where(m => m.IsVisible == true))
+                        {
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group label-static">
+                            <div class="input-group">
+                                @*@Html.CheckBox(item.IsVisible, new { @Class = "custom-control-input",@name=item.AgencyName, id = item.AgencyId })*@
+                                @Html.CheckBoxFor(u => u.isChecked, new { @Class = "custom-control-input", @Name ="Chk"+ item.AgencyId, id = "btnRadialUMassMemorialMedicalCenter" })
+                                @*@Html.ValidationMessageFor(u => u.RadialUMassMemorialMedicalCenter, string.Empty, new { @style = "color:red;!important" })*@
+                                <span class="custom-control-description"> @item.AgencyName </span>
+                                <span class="form-control-feedback">
+                                    <i class="material-icons">&#xE876;</i>
+                                </span>
+                                <span class="material-icons form-control-feedback">clear</span>
+                                <div><span id="Radicalvalidate" style="color:red"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                        }
+                    }
+                    @*<div class="col-md-6 col-sm-6">
+                            <div class="form-group label-static">
+                                <div class="input-group">
+
+                                    @Html.CheckBoxFor(u => u.RadialUMassMemorialMedicalCenter, new { @Class = "custom-control-input", @Name = "RadialUMassMemorialMedicalCenter", id = "btnRadialUMassMemorialMedicalCenter" })
+
+                                    @Html.ValidationMessageFor(u => u.RadialUMassMemorialMedicalCenter, string.Empty, new { @style = "color:red;!important" })
+                                    <span class="custom-control-description">UMass Memorial Medical Center </span>
+                                    <span class="form-control-feedback">
+                                        <i class="material-icons">&#xE876;</i>
+                                    </span>
+                                    <span class="material-icons form-control-feedback">clear</span>
+                                    <div><span id="Radicalvalidate" style="color:red"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group label-static">
+                                <div class="input-group">
+
+                                    @Html.CheckBoxFor(u => u.HonorHealth, new { @Class = "custom-control-input", @Name = "HonorHealth", id = "btnHonorHealth" })
+
+                                    @Html.ValidationMessageFor(u => u.HonorHealth, string.Empty, new { @style = "color:red;!important" })
+                                    <span class="custom-control-description">Honor Health </span>
+                                    <span class="form-control-feedback">
+                                        <i class="material-icons">&#xE876;</i>
+                                    </span>
+                                    <span class="material-icons form-control-feedback">clear</span>
+                                    <div><span id="Radicalvalidate" style="color:red"></span></div>
+                                </div>
+                            </div>
+                        </div>*@
+
+                </div>
+
+                <div class="terms-block">
+                    <label><input type="checkbox" id="btnCheck" name="optionsCheckboxes" /> I certify that the information i have provided is accurate ,i have read and agree to the(<label class="button registration-terms error-alert" id="popup1label" for="popup1">Terms of Usage</label>)</label>
+                </div>
+                <div class="text-right">
+                    <button class="btn btn-default" id="btnClear">Clear Form</button>
+                    <button class="btn btn-success" id="btnContinue">SAVE &amp; CONTINUE</button>
+                </div>
+
+            }
+        </div>
+        <!-- end register-section -->
+    </div>
+    <!-- end container -->
+    <link href="~/Content/css/bootstrap-checkbox.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Content/js/jquery.min.js" type="text/javascript"></script>
+
+    <script src="~/Content/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/Content/js/bootstrap-datepicker.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery.maskedinput.js"></script>
+
+    <script>
+
+        jQuery(function ($) {
+
+            $("#ContactCellPhone").mask("(999) 999-9999");
+            $("#Contactdirectphone").mask("(999) 999-9999");
+            $("#Contact2CellPhone").mask("(999) 999-9999");
+            $("#Contact2directphone").mask("(999) 999-9999");
+        });
+
+
+        $("#btnContinue").attr("disabled", !$("#btnCheck").checked);
+
+        $("#btnCheck").click(function () {
+            $("#btnContinue").attr("disabled", !this.checked);
+        });
+
+
+
+
+    </script>
+
+    <script>
+        //--------------Make First Letter Capital----------
+
+        function myFunction(id) {
+            var txt = document.getElementById(id);
+            txt.value = txt.value.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
+        }
+
+        $(function () {
+            $('#btnClear').click(function () {
+                $('input[type=text]').each(function () {
+                    $(this).val('');
+                });
+                $('select').each(function () {
+                    $(this).prop('selectedIndex', 0)
+                });
+            })
+        })
+
+        function isValid(e) {
+            debugger;
+            var charCode = (e.which) ? e.which : e.keyCode
+            if ((charCode >= 48 && charCode <= 90) || (charCode >= 96 && charCode <= 105) || charCode == 109 || charCode == 8 || charCode == 9 || charCode == 16 || charCode == 36) {
+                return true;
+            }
+            return false;
+
+        }
+        function isValidSpace(e) {
+            debugger;
+            var charCode = (e.which) ? e.which : e.keyCode
+            if ((charCode >= 48 && charCode <= 90) || (charCode >= 96 && charCode <= 105) || charCode == 109 || charCode == 8 || charCode == 32 || charCode == 9 || charCode == 16 || charCode == 36) {
+                return true;
+            }
+            return false;
+
+        }
+        function ValidateRadical() {
+            debugger;
+            if ($("#btnRadialUMassMemorialMedicalCenter").prop('checked') == true) {
+                return true;
+            }
+            else {
+                alert('Please check UMass Memorial Medical Cente ');
+                return false;
+            }
+
+        }
+
+
+    </script>
+
+
+</body>
+</html>

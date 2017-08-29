@@ -1,0 +1,27 @@
+body{
+	padding:90px 0 0 0;
+}
+.left-side {
+	padding:0 0 0 0;
+}
+.main-container {
+    padding: 0 0 0;
+}
+.card-signup{padding:30px 10px 20px;}
+.card-signup.tables{padding:10px;}
+.register-section{
+	padding:38px 38px 24px 38px;
+}
+.panel-body {
+    padding: 15px;
+}
+
+#piechart {
+    max-height: 500px;
+}
+#highcharts-0 {
+    top: 0 !important;
+}
+.main-heading {
+    font-size: 18px;
+}
